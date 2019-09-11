@@ -89,7 +89,7 @@ history = model.fit_generator(
 history_df = pd.DataFrame(history.history)
 history_df[['acc', 'val_acc']].plot()
 
-# load beat weights
+# load bet weights
 model.load_weights('best_model.h5')
 
 result=np.argmax(model.predict(test), axis=1)
