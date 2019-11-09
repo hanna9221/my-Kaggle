@@ -14,7 +14,7 @@ X_test = pd.read_csv(input_dir+'X_test.csv', index_col='TransactionID')
 data_all = data_train.append(X_test, verify_integrity=True)
 del data_train, X_test
 print('Data loaded.')
-## =============================================================================
+# =============================================================================
 def reduce_mem_usage(df):
     numerics = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
     start_mem = df.memory_usage().sum() / 1024**2    
@@ -105,7 +105,6 @@ clf = xgb.XGBClassifier(learning_rate=0.02,
 #        'reg_lambda': 0.01
 #       }
 #clf = lgb.LGBMClassifier(**params)
-
 #clf.fit(X_train, Y_train)
 
 
@@ -120,10 +119,4 @@ sample.to_csv('sub.csv', index=False)
 
 end = time.time()
 print('time spent =', round(end - start, 2), 's')
-
-#fi = pd.read_csv('feature_importance.csv', index_col='feature')
-#fi['exp20'] = clf.feature_importances_
-#rec = pd.Series(clf.feature_importances_)
-#fi['exp17'] = rec
-#fi.to_csv('feature_importance.csv')
 print('End.')
