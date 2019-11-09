@@ -4,26 +4,19 @@ import datetime
 
 input_dir = '..input/'
 
-train_transaction = pd.read_csv(input_dir+'train_transaction.csv', 
-                                index_col='TransactionID')
-train_identity = pd.read_csv(input_dir+'train_identity.csv', 
-                             index_col='TransactionID')
-test_transaction = pd.read_csv(input_dir+'test_transaction.csv', 
-                               index_col='TransactionID')
-test_identity = pd.read_csv(input_dir+'test_identity.csv', 
-                            index_col='TransactionID')
+train_transaction = pd.read_csv(input_dir+'train_transaction.csv', index_col='TransactionID')
+train_identity = pd.read_csv(input_dir+'train_identity.csv', index_col='TransactionID')
+test_transaction = pd.read_csv(input_dir+'test_transaction.csv', index_col='TransactionID')
+test_identity = pd.read_csv(input_dir+'test_identity.csv', index_col='TransactionID')
 
-train = train_transaction.merge(train_identity, how='left', 
-                                left_index=True, right_index=True)
-test = test_transaction.merge(test_identity, how='left', 
-                              left_index=True, right_index=True)
+train = train_transaction.merge(train_identity, how='left', left_index=True, right_index=True)
+test = test_transaction.merge(test_identity, how='left', left_index=True, right_index=True)
 
 del train_transaction, train_identity
 del test_transaction, test_identity
 
 label_train = train['isFraud']
 train.drop('isFraud', axis=1, inplace=True)
-#data_all = pd.concat([train, test])
 data_all = train.append(test, verify_integrity=True)
 del train, test
 print('Data loaded.')
@@ -57,7 +50,6 @@ def reduce_mem_usage(df):
     return df
 
 data_all = reduce_mem_usage(data_all)
-#train = reduce_mem_usage(train)
 # =============================================================================
 # Make some new features!!!
 # DeviceInfo & UserAgent
