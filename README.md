@@ -18,5 +18,5 @@ https://www.kaggle.com/c/ieee-fraud-detection
 2136/6381 on public leaderboard, 1686/6381 on private leaderboard.
 
 * Understanding Clouds from Satellite Images  
-https://www.kaggle.com/c/understanding_cloud_organization/overview
+https://www.kaggle.com/c/understanding_cloud_organization/overview  
 258/1538 on private leaderboard.
